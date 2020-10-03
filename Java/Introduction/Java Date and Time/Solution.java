@@ -1,5 +1,3 @@
-// github.com/RodneyShag
-
 import java.io.*;
 import java.math.*;
 import java.security.*;
@@ -11,26 +9,13 @@ import java.util.regex.*;
 import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
-import java.time.LocalDate;
 
 class Result {
 
-    /*
-     * Complete the 'findDay' function below.
-     *
-     * The function is expected to return a STRING.
-     * The function accepts following parameters:
-     *  1. INTEGER month
-     *  2. INTEGER day
-     *  3. INTEGER year
-     */
-
     public static String findDay(int month, int day, int year) {
-        int d = Integer.valueOf(day);
-        int m = Integer.valueOf(month);
-        int y = Integer.valueOf(year);
-        LocalDate date = LocalDate.of(y, m, d);
-        return date.getDayOfWeek().toString();
+        Calendar cal = Calendar.getInstance();
+        cal.set(year, month - 1, day);
+        return cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault()).toUpperCase(); 
     }
 
 }
